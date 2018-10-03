@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 //网络连接头文件和库
-#ifdef WIN32
+#ifdef _WIN32
 #include <WinSock2.h>
 #include <Windows.h>
 #pragma comment (lib, "ws2_32.lib")
@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 	int ret;
 
 	//初始化网络环境
-#ifdef WIN32
+#ifdef _WIN32
 	WSADATA oWsaData;
 	WSAStartup(MAKEWORD(2, 2), &oWsaData);
 #endif
@@ -50,7 +50,7 @@ FAILED:
 	}
 
 	//销毁网络环境
-#ifdef WIN32
+#ifdef _WIN32
 	WSACleanup();
 #endif
 
