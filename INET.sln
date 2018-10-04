@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibuvTimer", "LibuvTimer\Li
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibuvFile", "LibuvFile\LibuvFile.vcxproj", "{2F18503F-3917-4A15-9F85-B483486DC43C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Json-mjson", "Json-mjson\Json-mjson.vcxproj", "{213AA2FB-3A74-470F-A15D-58E89ED6293D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{2F18503F-3917-4A15-9F85-B483486DC43C}.Release|x64.Build.0 = Release|x64
 		{2F18503F-3917-4A15-9F85-B483486DC43C}.Release|x86.ActiveCfg = Release|Win32
 		{2F18503F-3917-4A15-9F85-B483486DC43C}.Release|x86.Build.0 = Release|Win32
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Debug|x64.ActiveCfg = Debug|x64
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Debug|x64.Build.0 = Debug|x64
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Debug|x86.ActiveCfg = Debug|Win32
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Debug|x86.Build.0 = Debug|Win32
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Release|x64.ActiveCfg = Release|x64
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Release|x64.Build.0 = Release|x64
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Release|x86.ActiveCfg = Release|Win32
+		{213AA2FB-3A74-470F-A15D-58E89ED6293D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
