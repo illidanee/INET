@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{213AA2FB-3A74-470F-A15D-58E89ED6293D}</ProjectGuid>
+    <ProjectGuid>{FFCF839B-A9C0-4870-9AAE-BFA55CBF40D9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Jsonmjson</RootNamespace>
+    <RootNamespace>Codebase64md5sha1</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,7 +88,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../3rd/mjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rd/crypto;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,7 +102,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../3rd/mjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../3rd/crypto;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,11 +144,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\3rd\mjson\json.c" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\3rd\crypto\base64_decoder.c" />
+    <ClCompile Include="..\3rd\crypto\base64_encoder.c" />
+    <ClCompile Include="..\3rd\crypto\md5.c" />
+    <ClCompile Include="..\3rd\crypto\sha1.c" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\3rd\mjson\json.h" />
+    <ClInclude Include="..\3rd\crypto\base64_decoder.h" />
+    <ClInclude Include="..\3rd\crypto\base64_encoder.h" />
+    <ClInclude Include="..\3rd\crypto\md5.h" />
+    <ClInclude Include="..\3rd\crypto\sha1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
