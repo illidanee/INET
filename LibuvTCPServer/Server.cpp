@@ -37,6 +37,8 @@ void On_close_cb(uv_handle_t* handle)
 		free(handle->data);
 		handle->data = NULL;
 	}
+
+	free(handle);
 }
 
 //断开回调函数
