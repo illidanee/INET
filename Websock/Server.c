@@ -185,12 +185,22 @@ void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 	
     struct WSContex* pWC = (struct WSContex*)stream->data;
 
+    // WS 握手
 	if (!pWC->isHand)
 	{
 		ShakeHand(stream, buf->base, nread);
 		pWC->isHand = 1;
 		return;
 	}
+
+    // WS 客户端关闭
+    if ((unsigned char)(buf->base[0]) == 0x88)
+    {
+        printf("Client closeing...\n");
+        return;
+    }
+    
+    // WS 客户端收发数据
 }
 
 //连接回调函数
