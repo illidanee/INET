@@ -119,7 +119,7 @@ int main()
 	uv_tcp_init(g_Loop, g_Tcp);
 	struct sockaddr_in oServerAddr;
 	uv_ip4_addr("0.0.0.0", 12345, &oServerAddr);
-	uv_tcp_bind(g_Tcp, (sockaddr*)&oServerAddr, 0);
+	uv_tcp_bind(g_Tcp, (const struct sockaddr*)&oServerAddr, 0);
 
 	uv_listen((uv_stream_t*)g_Tcp, SOMAXCONN, On_connection_cb);
 

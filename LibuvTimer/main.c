@@ -13,7 +13,7 @@ uv_loop_t* g_Loop;
 uv_timer_t* g_Timer;
 
 //自定义定时器类
-ITimer* g_ITimer;
+struct ITimer* g_ITimer;
 
 //定时器回调函数
 void On_timer_cb(uv_timer_t* handle)

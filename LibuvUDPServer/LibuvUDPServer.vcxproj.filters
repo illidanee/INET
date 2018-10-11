@@ -193,7 +193,7 @@
     <ClCompile Include="..\3rd\libuv\src\win\winsock.c">
       <Filter>3rd\libuv\src\win</Filter>
     </ClCompile>
-    <ClCompile Include="Server.cpp">
+    <ClCompile Include="Server.c">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

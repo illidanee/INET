@@ -204,7 +204,7 @@
     <ClCompile Include="..\3rd\libuv\src\win\util.c" />
     <ClCompile Include="..\3rd\libuv\src\win\winapi.c" />
     <ClCompile Include="..\3rd\libuv\src\win\winsock.c" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

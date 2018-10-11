@@ -32,15 +32,16 @@ int main(int argc, char** argv)
 	oToAddr.sin_port = htons(12345);
 	int nToAddrLen = sizeof(oToAddr);
 
-	int nSendLen = sendto(oClient, "Hello", strlen("Hello"), 0, (sockaddr*)&oToAddr, nToAddrLen);
+	int nSendLen = sendto(oClient, "Hello", strlen("Hello"), 0, (struct sockaddr*)&oToAddr, nToAddrLen);
 	printf("nSendLen = %d\n", nSendLen);
 
 	//ÊÕÊý¾Ý
-	char pBuffer[128] = {};
+    char pBuffer[128];
+    memset(pBuffer, 0, 128);
 	struct  sockaddr_in oFromAddr;
 	int nFromAddrLen = sizeof(oFromAddr);
 
-	int nRecvLen = recvfrom(oClient, pBuffer, 128, 0, (sockaddr*)&oFromAddr, &nFromAddrLen);
+	int nRecvLen = recvfrom(oClient, pBuffer, 128, 0, (struct  sockaddr*)&oFromAddr, &nFromAddrLen);
 	printf("nRecvLen = %d; pBuffer = %s\n", nRecvLen, pBuffer);
 
 FAILED:

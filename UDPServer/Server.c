@@ -41,12 +41,12 @@ int main(int argc, char** argv)
 		struct sockaddr_in oClientAddr;
 		int nClientAddrLen = sizeof(oClientAddr);
 
-		char pBuffer[128] = {};
+		char pBuffer[128];
 		memset(pBuffer, 0, 128);
-		int nRecvLen = recvfrom(oServer, pBuffer, 128, 0, (sockaddr*)&oClientAddr, &nClientAddrLen);
+		int nRecvLen = recvfrom(oServer, pBuffer, 128, 0, (struct sockaddr*)&oClientAddr, &nClientAddrLen);
 		printf("nRecvLen = %d; pBuffer = %s\n", nRecvLen, pBuffer);
 
-		int nSendLen = sendto(oServer, pBuffer, nRecvLen, 0, (sockaddr*)&oClientAddr, nClientAddrLen);
+		int nSendLen = sendto(oServer, pBuffer, nRecvLen, 0, (const struct sockaddr*)&oClientAddr, nClientAddrLen);
 		printf("nSendLen = %d\n", nSendLen);
 	}
 

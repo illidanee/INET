@@ -58,7 +58,7 @@ int main()
 
 	//½âÂëjson
 	json_t* root2 = NULL;
-	json_error err = json_parse_document(&root2, pHsonText);
+    enum json_error err = json_parse_document(&root2, pHsonText);
 
 	json_t* key = json_find_first_label(root2, "uname");
 	if (key)
@@ -73,5 +73,7 @@ int main()
 	}
 
 	free(pHsonText);
+
+    system("pause");
 	return 0;
 }

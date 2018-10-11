@@ -17,7 +17,7 @@
     <ClCompile Include="..\3rd\mjson\json.c">
       <Filter>3rd\mjson</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="main.c">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>

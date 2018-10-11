@@ -177,7 +177,7 @@
     <ClCompile Include="..\3rd\libuv\src\win\util.c" />
     <ClCompile Include="..\3rd\libuv\src\win\winapi.c" />
     <ClCompile Include="..\3rd\libuv\src\win\winsock.c" />
-    <ClCompile Include="Server.cpp" />
+    <ClCompile Include="Server.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\3rd\libuv\include\android-ifaddrs.h" />

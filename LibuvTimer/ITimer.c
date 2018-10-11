@@ -14,10 +14,10 @@ struct ITimer
 	int _RepeatCount;
 };
 
-static ITimer* AllocTimer(TimerProc oTimerProc, void* pData, int nRepeatCount)
+static struct ITimer* AllocTimer(TimerProc oTimerProc, void* pData, int nRepeatCount)
 {
-	ITimer* pTimer = (ITimer*)malloc(sizeof(ITimer));
-	memset(pTimer, 0, sizeof(ITimer));
+    struct ITimer* pTimer = (struct ITimer*)malloc(sizeof(struct ITimer));
+	memset(pTimer, 0, sizeof(struct ITimer));
 
 	uv_timer_init(uv_default_loop(), &pTimer->_Timer);
 	pTimer->_TimerProc = oTimerProc;
@@ -27,14 +27,14 @@ static ITimer* AllocTimer(TimerProc oTimerProc, void* pData, int nRepeatCount)
 	return pTimer;
 }
 
-static void FreeTimer(ITimer* pTimer)
+static void FreeTimer(struct ITimer* pTimer)
 {
 	free(pTimer);
 }
 
 static void On_timer_cb(uv_timer_t* handle)
 {
-	ITimer* pTimer = (ITimer*)handle->data;
+    struct ITimer* pTimer = (struct ITimer*)handle->data;
 
 	if (pTimer->_RepeatCount < 0)
 	{
@@ -51,9 +51,9 @@ static void On_timer_cb(uv_timer_t* handle)
 	}
 }
 
-ITimer* Schedule(TimerProc oTimerProc, void* pData, int nLoopTime, int nRepeatCount)
+struct ITimer* Schedule(TimerProc oTimerProc, void* pData, int nLoopTime, int nRepeatCount)
 {
-	ITimer* pTimer = AllocTimer(oTimerProc, pData, nRepeatCount);
+    struct ITimer* pTimer = AllocTimer(oTimerProc, pData, nRepeatCount);
 
 	pTimer->_Timer.data = pTimer;
 	uv_timer_start(&pTimer->_Timer, On_timer_cb, nLoopTime, nLoopTime);
@@ -61,7 +61,7 @@ ITimer* Schedule(TimerProc oTimerProc, void* pData, int nLoopTime, int nRepeatCo
 	return pTimer;
 }
 
-void CancelTimer(ITimer* pTimer)
+void CancelTimer(struct ITimer* pTimer)
 {
 	uv_timer_stop(&pTimer->_Timer);
 	FreeTimer(pTimer);

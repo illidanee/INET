@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 	oServerAddr.sin_port = htons(12345);
 	int nServerAddrLen = sizeof(oServerAddr);
 
-	ret = connect(oClient, (sockaddr*)&oServerAddr, nServerAddrLen);
+	ret = connect(oClient, (const struct sockaddr*)&oServerAddr, nServerAddrLen);
 	if (ret != 0) {
 		goto FAILED;
 	}
@@ -41,7 +41,8 @@ int main(int argc, char** argv)
 	int nSendLen = send(oClient, "Hello", 5, 0);
 	printf("nSendLen = %d\n", nSendLen);
 
-	char pBuffer[128] = {};
+	char pBuffer[128];
+    memset(pBuffer, 0, 128);
 	int nRecvLen = recv(oClient, pBuffer, 128, 0);
 	printf("nRecvLen = %d; pBuffer = %s\n", nRecvLen, pBuffer);
 

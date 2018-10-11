@@ -39,7 +39,7 @@ void On_udp_recv_cb(uv_udp_t* handle, ssize_t nread, const uv_buf_t* buf, const 
 
 	//打印接收到的数据
 	buf->base[nread] = 0;
-	printf("IP : %s, Port : %d， recv %d\n", inet_ntoa(((sockaddr_in*)addr)->sin_addr), ntohs(((sockaddr_in*)addr)->sin_port), nread);
+	printf("IP : %s, Port : %d， recv %d\n", inet_ntoa(((struct sockaddr_in*)addr)->sin_addr), ntohs(((struct sockaddr_in*)addr)->sin_port), nread);
 	printf("%s\n", buf->base);
 
 	//发送数据
@@ -60,7 +60,7 @@ int main()
 	uv_udp_init(g_Loop, g_Udp);
 	struct sockaddr_in oServerAddr;
 	uv_ip4_addr("0.0.0.0", 12345, &oServerAddr);
-	uv_udp_bind(g_Udp, (sockaddr*)&oServerAddr, 0);
+	uv_udp_bind(g_Udp, (const struct sockaddr*)&oServerAddr, 0);
 
 	uv_udp_recv_start(g_Udp, On_alloc_cb, On_udp_recv_cb);
 

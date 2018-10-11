@@ -23,9 +23,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Server.cpp">
-      <Filter>Src</Filter>
-    </ClCompile>
     <ClCompile Include="..\3rd\libuv\src\fs-poll.c">
       <Filter>3rd\libuv\src</Filter>
     </ClCompile>
@@ -118,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="..\3rd\libuv\src\win\winsock.c">
       <Filter>3rd\libuv\src\win</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.c">
+      <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -229,7 +229,7 @@
     <ClCompile Include="..\3rd\crypto\sha1.c">
       <Filter>3rd\crypto</Filter>
     </ClCompile>
-    <ClCompile Include="Server.cpp">
+    <ClCompile Include="Server.c">
       <Filter>Src</Filter>
     </ClCompile>
   </ItemGroup>
