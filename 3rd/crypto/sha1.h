@@ -6,7 +6,7 @@
 #define SHA1_DIGEST_SIZE 20
 
 void
-crypt_sha1(uint8_t* buffer, int sz, uint8_t* output, int* e_sz);
+crypt_sha1(const uint8_t* buffer, int sz, uint8_t* output, int* e_sz);
 
 
 #endif

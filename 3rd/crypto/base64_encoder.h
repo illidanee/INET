@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 char*
-base64_encode(uint8_t* text, int sz, int* encode_sz);
+base64_encode(const uint8_t* text, int sz, int* encode_sz);
 
 void
 base64_encode_free(char* result);

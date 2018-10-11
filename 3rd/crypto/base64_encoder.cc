@@ -16,10 +16,10 @@ base64_encode(const uint8_t* text, int sz, int* out_esz) {
 	
 	char *buffer = NULL;
 	if (encode_sz >= SMALL_CHUNK) {
-		buffer = my_malloc(encode_sz + 1);
+		buffer = (char*)my_malloc(encode_sz + 1);
 	}
 	else {
-		buffer = my_malloc(SMALL_CHUNK);
+		buffer = (char*)my_malloc(SMALL_CHUNK);
 	}
 	int i, j;
 	j = 0;

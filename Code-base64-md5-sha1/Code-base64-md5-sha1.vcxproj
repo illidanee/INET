@@ -144,11 +144,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\3rd\crypto\base64_decoder.c" />
-    <ClCompile Include="..\3rd\crypto\base64_encoder.c" />
-    <ClCompile Include="..\3rd\crypto\md5.c" />
-    <ClCompile Include="..\3rd\crypto\sha1.c" />
-    <ClCompile Include="main.c" />
+    <ClCompile Include="..\3rd\crypto\base64_decoder.cc" />
+    <ClCompile Include="..\3rd\crypto\base64_encoder.cc" />
+    <ClCompile Include="..\3rd\crypto\md5.cc" />
+    <ClCompile Include="..\3rd\crypto\sha1.cc" />
+    <ClCompile Include="main.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\3rd\crypto\base64_decoder.h" />

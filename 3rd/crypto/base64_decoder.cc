@@ -28,10 +28,10 @@ base64_decode(const uint8_t* text, size_t sz, int* out_size) {
 	int decode_sz = ((sz + 3) / 4 * 3) + 1;
 	char *buffer = NULL;
 	if (decode_sz > SMALL_CHUNK) {
-		buffer = my_malloc(decode_sz);
+		buffer = (char*)my_malloc(decode_sz);
 	}
 	else {
-		buffer = my_malloc(SMALL_CHUNK);
+		buffer = (char*)my_malloc(SMALL_CHUNK);
 	}
 	int i, j;
 	int output = 0;
