@@ -7,32 +7,33 @@
 #include "sha1.h"
 #include "base64_encoder.h"
 
-struct WSContex
+static struct WSContex
 {
 	int isHand;
 	char* data;
 };
 
 //全局事件循环
-uv_loop_t* g_Loop;
+static uv_loop_t* g_Loop;
 //监听句柄
-uv_tcp_t* g_Tcp;
+static uv_tcp_t* g_Tcp;
+
 //http parser
-http_parser_settings g_ParserSettings;
-http_parser g_Parser;
-static char field_sec_key[256];
-static char value_sec_key[256];
+static http_parser_settings g_ParserSettings;
+static http_parser g_Parser;
+static char g_SecKeyField[256];
+static char g_SecKeyValue[256];
 static int g_IsKey = 0;
 static int g_HasKey = 0;
 
-static char* wb_migic = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
-static char *wb_accept = "HTTP/1.1 101 Switching Protocols\r\n"
+static char* g_Migic = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
+static char* g_Accept = "HTTP/1.1 101 Switching Protocols\r\n"
 "Upgrade:websocket\r\n"
 "Connection: Upgrade\r\n"
 "Sec-WebSocket-Accept: %s\r\n"
 "WebSocket-Protocol:chat\r\n\r\n";
 
-
+//前置声明
 void On_write_cb(uv_write_t* req, int status);
 void On_close_cb(uv_handle_t* handle);
 void On_shutdown_cb(uv_shutdown_t* req, int status);
@@ -42,7 +43,14 @@ void On_connection_cb(uv_stream_t* server, int status);
 void On_connection_cb(uv_stream_t* server, int status);
 
 static void
+ShakeHand(uv_stream_t* stream, char* pSendData, int nSendLen);
+static void
 SendData(uv_stream_t* stream, char* pSendData, int nSendLen);
+static int
+on_ws_header_field(http_parser* p, const char *at, size_t length);
+static int
+on_ws_value_field(http_parser* p, const char *at, size_t length);
+
 
 //写入数据后回调函数
 void On_write_cb(uv_write_t* req, int status)
@@ -107,21 +115,33 @@ ShakeHand(uv_stream_t* stream, char* pSendData, int nSendLen)
 
 	if (g_HasKey)
 	{
-		printf("Sec-WebSocket-Key : %s \n", value_sec_key);
+		printf("Sec-WebSocket-Key : %s \n", g_SecKeyValue);
 		
-		//int nSha1Len;
-		//char key_migic[512] = {};
-		//char sha1_key_migic[SHA1_DIGEST_SIZE] = {};
-		//sprintf(key_migic, "%s%s", value_sec_key, wb_migic);
-		//crypt_sha1((uint8_t*)key_migic, strlen(key_migic), (uint8_t*)&sha1_key_migic, &nSha1Len);
+		//Key + Migic
+        char pKeyAndMigic[512];
+        memset(pKeyAndMigic, 0, 512);
+        sprintf(pKeyAndMigic, "%s%s", g_SecKeyValue, g_Migic);
 
-		//int nEncodeLen;
-		//char* base64_buff = base64_encode((uint8_t*)sha1_key_migic, nSha1Len, &nEncodeLen);
-		//char clientRes[1024] = {};
-		//sprintf(clientRes, wb_accept, base64_buff);
-		//base64_encode_free(base64_buff);
+        //Sha1
+        int nSha1Len;
+		char pSha1ForKeyAndMigic[SHA1_DIGEST_SIZE];
+        memset(pSha1ForKeyAndMigic, 0, SHA1_DIGEST_SIZE);
+		crypt_sha1((uint8_t*)pKeyAndMigic, strlen(pKeyAndMigic), (uint8_t*)&pSha1ForKeyAndMigic, &nSha1Len);
 
-		//SendData(stream, clientRes, strlen(clientRes));
+        //Base64
+		int nEncodeLen;
+		char* base64_buff = base64_encode((uint8_t*)pSha1ForKeyAndMigic, nSha1Len, &nEncodeLen);
+
+        //Response Message
+		char pClientRes[1024];
+        memset(pClientRes, 0, 1024);
+		sprintf(pClientRes, g_Accept, base64_buff);
+
+        //Free Memory
+		base64_encode_free(base64_buff);
+
+        //Send Message
+		SendData(stream, pClientRes, strlen(pClientRes));
 	}
 }
 
@@ -151,17 +171,13 @@ void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 		return;
 	}
 
-	//打印接收到的数据
-	//buf->base[nread] = 0;
-	//printf("recv %d\n", nread);
-	//printf("%s\n", buf->base);
 	printf("Start WebSock...\n");
 	
     struct WSContex* pWC = (struct WSContex*)stream->data;
 
 	if (!pWC->isHand)
 	{
-		ShakeHand(stream, buf->base, buf->len);
+		ShakeHand(stream, buf->base, nread);
 		pWC->isHand = 1;
 		return;
 	}
@@ -211,8 +227,8 @@ on_ws_value_field(http_parser* p, const char *at, size_t length)
 		return 0;
 	}
 
-	strncpy(value_sec_key, at, length);
-	value_sec_key[length] = 0;
+	strncpy(g_SecKeyValue, at, length);
+	g_SecKeyValue[length] = 0;
 	g_HasKey = 1;
 
 	return 0;
