@@ -57,9 +57,13 @@ void On_write_cb(uv_write_t* req, int status)
 {
 	printf("On_write_cb...\n");
 
-	if (req->data) {
-		free(req->data);
+    uv_buf_t* w_buf = req->data;
+
+	if (w_buf) {
+        free(w_buf->base);
+		free(w_buf);
 	}
+
 	free(req);
 }
 
@@ -92,6 +96,7 @@ void On_shutdown_cb(uv_shutdown_t* req, int status)
 void On_alloc_cb(uv_handle_t* handle, size_t suggested_size, uv_buf_t* buf)
 {
 	printf("On_alloc_cb...\n");
+
     struct WSContex* pWC = (struct WSContex*)handle->data;
 
 	if (pWC->data != NULL) {
@@ -152,7 +157,11 @@ SendData(uv_stream_t* stream, char* pSendData, int nSendLen)
 	memset(w_req, 0, sizeof(uv_write_t));
 	uv_buf_t* w_buf = (uv_buf_t*)malloc(sizeof(uv_buf_t));
 	memset(w_buf, 0, sizeof(uv_buf_t));
-	w_buf->base = pSendData;
+
+    char* pSendBuf = (char*)malloc(nSendLen);
+    memcpy(pSendBuf, pSendData, nSendLen);
+
+	w_buf->base = pSendBuf;
 	w_buf->len = nSendLen;
 	w_req->data = w_buf;
 	uv_write(w_req, stream, w_buf, 1, On_write_cb);
@@ -171,6 +180,7 @@ void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 		return;
 	}
 
+    //Websock
 	printf("Start WebSock...\n");
 	
     struct WSContex* pWC = (struct WSContex*)stream->data;
@@ -181,9 +191,6 @@ void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 		pWC->isHand = 1;
 		return;
 	}
-
-	//发送数据
-	SendData(stream, buf->base, buf->len);
 }
 
 //连接回调函数
@@ -198,9 +205,7 @@ void On_connection_cb(uv_stream_t* server, int status)
 
     struct WSContex* pWC = (struct WSContex*)malloc(sizeof(struct WSContex));
 	memset(pWC, 0, sizeof(struct WSContex));
-
 	pClient->data = pWC;
-
 	uv_read_start((uv_stream_t*)pClient, On_alloc_cb, On_read_cb);
 }
 
@@ -236,6 +241,7 @@ on_ws_value_field(http_parser* p, const char *at, size_t length)
 
 int main()
 {
+    //初始化http_parser
 	http_parser_settings_init(&g_ParserSettings);
 	g_ParserSettings.on_header_field = on_ws_header_field;
 	g_ParserSettings.on_header_value = on_ws_value_field;
