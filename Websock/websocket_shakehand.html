@@ -9,7 +9,7 @@
 
     ws.onopen = function(){
      alert("open");
-     // ws.send('WebSocket'); 
+     ws.send('Hello WebSocket'); 
     };
     ws.onmessage = function(ev){
      alert(ev.data);

@@ -47,9 +47,9 @@ ShakeHand(uv_stream_t* stream, char* pSendData, int nSendLen);
 static void
 SendData(uv_stream_t* stream, char* pSendData, int nSendLen);
 static int
-on_ws_header_field(http_parser* p, const char *at, size_t length);
+On_ws_header_field(http_parser* p, const char *at, size_t length);
 static int
-on_ws_value_field(http_parser* p, const char *at, size_t length);
+On_ws_value_field(http_parser* p, const char *at, size_t length);
 
 
 //写入数据后回调函数
@@ -167,6 +167,82 @@ SendData(uv_stream_t* stream, char* pSendData, int nSendLen)
 	uv_write(w_req, stream, w_buf, 1, On_write_cb);
 }
 
+static void
+WS_RecvData(uv_stream_t* stream, unsigned char* data, int len)
+{
+    if (data[0] != 0x81 && data[0] != 0x82)
+    {
+        return;
+    }
+
+    unsigned long long nDataLen = data[1] & 0x0000007f;
+    unsigned int nHeadOffset = 2;
+    if (nDataLen == 126)
+    {
+        nDataLen = (data[2] << 8) | data[3];
+        nHeadOffset += 2;
+    }
+    else if (nDataLen == 127)
+    {
+        unsigned int low = (data[2] << 24) | (data[3] << 16) | (data[4] << 8) || data[5];
+        unsigned int hight = (data[6] << 24) | (data[7] << 16) | (data[8] << 8) || data[9];
+
+        nDataLen = (hight << 32) | low;
+        nHeadOffset = 8;
+    }
+
+    unsigned char* pMask = data + nHeadOffset;
+    unsigned char* pBody = data + nHeadOffset + 4;
+
+    for (unsigned int i = 0; i < nDataLen; ++i)
+    {
+        pBody[i] = pBody[i] ^ pMask[i % 4];
+    }
+
+    char Buffer[4096];
+    memcpy(Buffer, pBody, nDataLen);
+    Buffer[nDataLen] = 0;
+    printf("------: %s\n", Buffer);
+}
+
+static void
+WS_SendData(uv_stream_t* stream, unsigned char* data, int len)
+{
+    unsigned int nHeadOffset = 2;
+    if (len > 125 && len <= 65535)
+    {
+        nHeadOffset += 2;
+    }
+    else if (len > 65535)
+    {
+        nHeadOffset += 8;
+    }
+
+    unsigned char* pBuffer = (unsigned char*)malloc(nHeadOffset + len);
+
+    pBuffer[0] = 0x81;
+    if (len <= 125)
+    {
+        pBuffer[1] = len;
+    }
+    else if (len > 125 && len <= 65535)
+    {
+        pBuffer[1] = 126;
+        pBuffer[2] = (len & 0x0000ff00) >> 8;
+        pBuffer[3] = (len & 0x000000ff);
+    }
+    else
+    {
+        return;
+    }
+
+    memcpy(pBuffer + nHeadOffset, data, len);
+
+    SendData(stream, pBuffer, nHeadOffset + len);
+
+    free(pBuffer);
+}
+
 //读取数据回调函数
 void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 {
@@ -200,7 +276,11 @@ void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
         return;
     }
     
-    // WS 客户端收发数据
+    // WS 接收数据 - （暂不处理少包粘包）
+    WS_RecvData(stream, buf->base, nread);
+
+    // WS 发送数据
+    WS_SendData(stream, "Hello Client...", strlen("Hello Client..."));
 }
 
 //连接回调函数
@@ -220,7 +300,7 @@ void On_connection_cb(uv_stream_t* server, int status)
 }
 
 static int
-on_ws_header_field(http_parser* p, const char *at, size_t length)
+On_ws_header_field(http_parser* p, const char *at, size_t length)
 {
 	if (strncmp(at, "Sec-WebSocket-Key", length) == 0)
 	{
@@ -235,7 +315,7 @@ on_ws_header_field(http_parser* p, const char *at, size_t length)
 }
 
 static int 
-on_ws_value_field(http_parser* p, const char *at, size_t length)
+On_ws_value_field(http_parser* p, const char *at, size_t length)
 {
 	if (!g_IsKey)
 	{
@@ -253,8 +333,8 @@ int main()
 {
     //初始化http_parser
 	http_parser_settings_init(&g_ParserSettings);
-	g_ParserSettings.on_header_field = on_ws_header_field;
-	g_ParserSettings.on_header_value = on_ws_value_field;
+	g_ParserSettings.on_header_field = On_ws_header_field;
+	g_ParserSettings.on_header_value = On_ws_value_field;
 
 	http_parser_init(&g_Parser, HTTP_REQUEST);
 
