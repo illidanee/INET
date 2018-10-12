@@ -57,6 +57,61 @@ void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf);
 void On_connection_cb(uv_stream_t* server, int status);
 void On_connection_cb(uv_stream_t* server, int status);
 
+// 发送数据
+static void
+SendData(uv_stream_t* stream, char* pSendData, int nSendLen)
+{
+	uv_write_t* w_req = (uv_write_t*)malloc(sizeof(uv_write_t));
+	memset(w_req, 0, sizeof(uv_write_t));
+	uv_buf_t* w_buf = (uv_buf_t*)malloc(sizeof(uv_buf_t));
+	memset(w_buf, 0, sizeof(uv_buf_t));
+
+	char* pSendBuf = (char*)malloc(nSendLen);
+	memcpy(pSendBuf, pSendData, nSendLen);
+
+	w_buf->base = pSendBuf;
+	w_buf->len = nSendLen;
+	w_req->data = w_buf;
+	uv_write(w_req, stream, w_buf, 1, On_write_cb);
+}
+
+//URL 处理函数
+void Test1(uv_stream_t* stream, char* url)
+{
+	char* body = "SUCCESS TEST1";
+
+	static char pResponseBuffer[4096];
+	char* pWalk = pResponseBuffer;
+	sprintf(pWalk, "HTTP/1.1 %d %s\r\n", 200, "OK");
+	pWalk += strlen(pWalk);
+	sprintf(pWalk, "transfer-encoding:%s\r\n", "identity");
+	pWalk += strlen(pWalk);
+	sprintf(pWalk, "content-length: %d\r\n\r\n", strlen(body));
+	pWalk += strlen(pWalk);
+
+	sprintf(pWalk, "%s", body);
+
+	SendData(stream, pResponseBuffer, strlen(pResponseBuffer));
+}
+
+void Test2(uv_stream_t* stream, char* url)
+{
+	char* body = "SUCCESS TEST2";
+
+	static char pResponseBuffer[4096];
+	char* pWalk = pResponseBuffer;
+	sprintf(pWalk, "HTTP/1.1 %d %s\r\n", 200, "OK");
+	pWalk += strlen(pWalk);
+	sprintf(pWalk, "transfer-encoding:%s\r\n", "identity");
+	pWalk += strlen(pWalk);
+	sprintf(pWalk, "content-length: %d\r\n\r\n", strlen(body));
+	pWalk += strlen(pWalk);
+
+	sprintf(pWalk, "%s", body);
+
+	SendData(stream, pResponseBuffer, strlen(pResponseBuffer));
+}
+
 //写入数据后回调函数
 void On_write_cb(uv_write_t* req, int status)
 {
@@ -142,7 +197,7 @@ On_http_request(uv_stream_t* stream, char* req, int len) {
     // http://www.baidu.com:6080/test?name=blake&age=34
     int nUrlLen = FilterUrl(g_RequestUrl);
     struct WebHandleNode* pNode = GetWebHandleNode(g_RequestUrl, nUrlLen);
-    printf("%s\n", g_RequestUrl);
+	printf("---------Url: %s\n", g_RequestUrl);
 
     if (pNode == NULL) {
         return;
@@ -176,8 +231,9 @@ void On_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 
     //打印接收到的数据
     buf->base[nread] = 0;
-    printf("recv %d\n", nread);
+    printf("---------Request Message Length: %d\n", nread);
     printf("%s\n", buf->base);
+	printf("---------Request End\n");
 
     //处理http请求
     On_http_request(stream, buf->base, nread);
@@ -207,6 +263,10 @@ void On_connection_cb(uv_stream_t* server, int status)
 
 int main()
 {
+	//注册url事件
+	RegisterWebHandle("/test1", Test1, NULL);
+	RegisterWebHandle("/test2", Test2, NULL);
+
     //创建事件循环
     g_Loop = uv_default_loop();
 
