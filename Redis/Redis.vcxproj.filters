@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="3rd">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="3rd\hiredis">
+      <UniqueIdentifier>{6bf16c2b-740a-461d-9644-cd559f99af51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\hiredis\include">
+      <UniqueIdentifier>{92aa376d-456f-4763-a977-b528daff5bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\hiredis\src">
+      <UniqueIdentifier>{7321d493-9319-4276-a277-17fa4cbe5197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3rd\hiredis\include\Win32_Interop">
+      <UniqueIdentifier>{9084545e-c9f2-4687-9133-c56a717057ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd\hiredis\src\win32fixes.c">
+      <Filter>3rd\hiredis\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\EventLog.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_ANSI.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_APIs.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Assert.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_CommandLine.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Common.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_dlmalloc.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Error.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_EventLog.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_FDAPI.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_fdapi_crt.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Portability.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_PThread.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_QFork.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_QFork_impl.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_RedisLog.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_rfdmap.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Service.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Signal_Process.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_SmartHandle.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_StackTrace.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_ThreadControl.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Time.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_types.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_types_hiredis.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_variadicFunctor.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_winapifamily.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_wsiocp.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_wsiocp2.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32fixes.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\WS2tcpip.h">
+      <Filter>3rd\hiredis\include\Win32_Interop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\async.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\dict.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\fmacros.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\hiredis.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\net.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\sds.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\win32_hiredis.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd\hiredis\include\zmalloc.h">
+      <Filter>3rd\hiredis\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

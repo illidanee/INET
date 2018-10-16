@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E8064D96-147B-446E-8E64-15C10CFD4C67}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Redis</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\3rd\hiredis\include\async.h" />
+    <ClInclude Include="..\3rd\hiredis\include\dict.h" />
+    <ClInclude Include="..\3rd\hiredis\include\fmacros.h" />
+    <ClInclude Include="..\3rd\hiredis\include\hiredis.h" />
+    <ClInclude Include="..\3rd\hiredis\include\net.h" />
+    <ClInclude Include="..\3rd\hiredis\include\sds.h" />
+    <ClInclude Include="..\3rd\hiredis\include\win32_hiredis.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\EventLog.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32fixes.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_ANSI.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_APIs.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Assert.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_CommandLine.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Common.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_dlmalloc.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Error.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_EventLog.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_FDAPI.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_fdapi_crt.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Portability.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_PThread.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_QFork.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_QFork_impl.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_RedisLog.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_rfdmap.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Service.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Signal_Process.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_SmartHandle.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_StackTrace.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_ThreadControl.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_Time.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_types.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_types_hiredis.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\Win32_variadicFunctor.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_winapifamily.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_wsiocp.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\win32_wsiocp2.h" />
+    <ClInclude Include="..\3rd\hiredis\include\Win32_Interop\WS2tcpip.h" />
+    <ClInclude Include="..\3rd\hiredis\include\zmalloc.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
