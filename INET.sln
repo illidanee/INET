@@ -25,13 +25,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Code-base64-md5-sha1", "Cod
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpParser", "HttpParser\HttpParser.vcxproj", "{A62F11E0-C755-45CC-A270-4B280490B0B8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Websock", "Websock\Websock.vcxproj", "{D35D33DA-F111-44C1-BD35-DB414DADA0FD}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibuvHttpServer", "LibuvHttpServer\LibuvHttpServer.vcxproj", "{EE90F3D6-A655-404A-810E-335ACAED1CE8}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mysql", "Mysql\Mysql.vcxproj", "{DA095EAB-8216-4FB9-8229-30B9F26EA60F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Redis", "Redis\Redis.vcxproj", "{E8064D96-147B-446E-8E64-15C10CFD4C67}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibuvWebsock", "LibuvWebsock\LibuvWebsock.vcxproj", "{1ED072AB-B959-4ABC-94DF-1E9C6639A431}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,14 +129,6 @@ Global
 		{A62F11E0-C755-45CC-A270-4B280490B0B8}.Release|x64.Build.0 = Release|x64
 		{A62F11E0-C755-45CC-A270-4B280490B0B8}.Release|x86.ActiveCfg = Release|Win32
 		{A62F11E0-C755-45CC-A270-4B280490B0B8}.Release|x86.Build.0 = Release|Win32
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Debug|x64.ActiveCfg = Debug|x64
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Debug|x64.Build.0 = Debug|x64
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Debug|x86.ActiveCfg = Debug|Win32
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Debug|x86.Build.0 = Debug|Win32
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Release|x64.ActiveCfg = Release|x64
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Release|x64.Build.0 = Release|x64
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Release|x86.ActiveCfg = Release|Win32
-		{D35D33DA-F111-44C1-BD35-DB414DADA0FD}.Release|x86.Build.0 = Release|Win32
 		{EE90F3D6-A655-404A-810E-335ACAED1CE8}.Debug|x64.ActiveCfg = Debug|x64
 		{EE90F3D6-A655-404A-810E-335ACAED1CE8}.Debug|x64.Build.0 = Debug|x64
 		{EE90F3D6-A655-404A-810E-335ACAED1CE8}.Debug|x86.ActiveCfg = Debug|Win32
@@ -161,6 +153,14 @@ Global
 		{E8064D96-147B-446E-8E64-15C10CFD4C67}.Release|x64.Build.0 = Release|x64
 		{E8064D96-147B-446E-8E64-15C10CFD4C67}.Release|x86.ActiveCfg = Release|Win32
 		{E8064D96-147B-446E-8E64-15C10CFD4C67}.Release|x86.Build.0 = Release|Win32
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Debug|x64.ActiveCfg = Debug|x64
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Debug|x64.Build.0 = Debug|x64
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Debug|x86.ActiveCfg = Debug|Win32
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Debug|x86.Build.0 = Debug|Win32
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Release|x64.ActiveCfg = Release|x64
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Release|x64.Build.0 = Release|x64
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Release|x86.ActiveCfg = Release|Win32
+		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
