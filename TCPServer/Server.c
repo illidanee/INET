@@ -49,7 +49,8 @@ int main(int argc, char** argv)
 		printf("New client %s：%d\n", inet_ntoa(oClientAddr.sin_addr), ntohs(oClientAddr.sin_port));
 
 		//收发数据
-		char pBuffer[128] = {};
+        char pBuffer[128];
+        memset(pBuffer, 0, 128);
 		int nRecvLen = recv(oClient, pBuffer, 128, 0);
 		printf("nRecvLen = %d; pBuffer = %s\n", nRecvLen, pBuffer);
 
