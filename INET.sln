@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UDPServer", "UDPServer\UDPServer.vcxproj", "{1E772B33-F8E1-4378-BFAE-B61614229A6B}"
 EndProject
@@ -32,6 +32,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Redis", "Redis\Redis.vcxproj", "{E8064D96-147B-446E-8E64-15C10CFD4C67}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibuvWebsock", "LibuvWebsock\LibuvWebsock.vcxproj", "{1ED072AB-B959-4ABC-94DF-1E9C6639A431}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Protobuf", "Protobuf\Protobuf.vcxproj", "{4C8569CB-E789-4E4B-B040-82E868B0A30D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -161,8 +163,19 @@ Global
 		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Release|x64.Build.0 = Release|x64
 		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Release|x86.ActiveCfg = Release|Win32
 		{1ED072AB-B959-4ABC-94DF-1E9C6639A431}.Release|x86.Build.0 = Release|Win32
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Debug|x64.ActiveCfg = Debug|x64
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Debug|x64.Build.0 = Debug|x64
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Debug|x86.ActiveCfg = Debug|Win32
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Debug|x86.Build.0 = Debug|Win32
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Release|x64.ActiveCfg = Release|x64
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Release|x64.Build.0 = Release|x64
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Release|x86.ActiveCfg = Release|Win32
+		{4C8569CB-E789-4E4B-B040-82E868B0A30D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DF0525C-A643-4534-BF50-D5C519DE1650}
 	EndGlobalSection
 EndGlobal
