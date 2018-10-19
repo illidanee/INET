@@ -1,7 +1,9 @@
 
 *.VC.db
-
 .vs
 
 x64
 Debug
+
+/3rd/Protobuf/lib/libprotocd.lib
+/3rd/Protobuf/lib/libprotobufd.lib
