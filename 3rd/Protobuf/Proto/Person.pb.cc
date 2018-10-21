@@ -19,21 +19,23 @@
 #endif
 // @@protoc_insertion_point(includes)
 
+namespace MyMsg {
 class PersonDefaultTypeInternal {
  public:
   ::google::protobuf::internal::ExplicitlyConstructed<Person>
       _instance;
 } _Person_default_instance_;
+}  // namespace MyMsg
 namespace protobuf_Person_2eproto {
 static void InitDefaultsPerson() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   {
-    void* ptr = &::_Person_default_instance_;
-    new (ptr) ::Person();
+    void* ptr = &::MyMsg::_Person_default_instance_;
+    new (ptr) ::MyMsg::Person();
     ::google::protobuf::internal::OnShutdownDestroyMessage(ptr);
   }
-  ::Person::InitAsDefaultInstance();
+  ::MyMsg::Person::InitAsDefaultInstance();
 }
 
 ::google::protobuf::internal::SCCInfo<0> scc_info_Person =
@@ -46,24 +48,24 @@ void InitDefaults() {
 ::google::protobuf::Metadata file_level_metadata[1];
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Person, _has_bits_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Person, _internal_metadata_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::MyMsg::Person, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::MyMsg::Person, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Person, name_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Person, age_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Person, email_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::MyMsg::Person, name_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::MyMsg::Person, age_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::MyMsg::Person, email_),
   0,
-  2,
   1,
+  ~0u,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, sizeof(::Person)},
+  { 0, 8, sizeof(::MyMsg::Person)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::google::protobuf::Message*>(&::_Person_default_instance_),
+  reinterpret_cast<const ::google::protobuf::Message*>(&::MyMsg::_Person_default_instance_),
 };
 
 void protobuf_AssignDescriptors() {
@@ -87,11 +89,11 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\014Person.proto\"2\n\006Person\022\014\n\004name\030\001 \002(\t\022\013"
-      "\n\003age\030\002 \002(\005\022\r\n\005email\030\003 \001(\t"
+      "\n\014Person.proto\022\005MyMsg\"2\n\006Person\022\014\n\004name\030"
+      "\001 \002(\t\022\013\n\003age\030\002 \001(\005\022\r\n\005email\030\003 \003(\t"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 66);
+      descriptor, 73);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Person.proto", &protobuf_RegisterTypes);
 }
@@ -107,6 +109,7 @@ struct StaticDescriptorInitializer {
   }
 } static_descriptor_initializer;
 }  // namespace protobuf_Person_2eproto
+namespace MyMsg {
 
 // ===================================================================
 
@@ -123,39 +126,34 @@ Person::Person()
   ::google::protobuf::internal::InitSCC(
       &protobuf_Person_2eproto::scc_info_Person.base);
   SharedCtor();
-  // @@protoc_insertion_point(constructor:Person)
+  // @@protoc_insertion_point(constructor:MyMsg.Person)
 }
 Person::Person(const Person& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_) {
+      _has_bits_(from._has_bits_),
+      email_(from.email_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (from.has_name()) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_email()) {
-    email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
-  }
   age_ = from.age_;
-  // @@protoc_insertion_point(copy_constructor:Person)
+  // @@protoc_insertion_point(copy_constructor:MyMsg.Person)
 }
 
 void Person::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   age_ = 0;
 }
 
 Person::~Person() {
-  // @@protoc_insertion_point(destructor:Person)
+  // @@protoc_insertion_point(destructor:MyMsg.Person)
   SharedDtor();
 }
 
 void Person::SharedDtor() {
   name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  email_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void Person::SetCachedSize(int size) const {
@@ -173,19 +171,15 @@ const Person& Person::default_instance() {
 
 
 void Person::Clear() {
-// @@protoc_insertion_point(message_clear_start:Person)
+// @@protoc_insertion_point(message_clear_start:MyMsg.Person)
   ::google::protobuf::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  email_.Clear();
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 3u) {
-    if (cached_has_bits & 0x00000001u) {
-      name_.ClearNonDefaultToEmptyNoArena();
-    }
-    if (cached_has_bits & 0x00000002u) {
-      email_.ClearNonDefaultToEmptyNoArena();
-    }
+  if (cached_has_bits & 0x00000001u) {
+    name_.ClearNonDefaultToEmptyNoArena();
   }
   age_ = 0;
   _has_bits_.Clear();
@@ -196,7 +190,7 @@ bool Person::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:Person)
+  // @@protoc_insertion_point(parse_start:MyMsg.Person)
   for (;;) {
     ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
@@ -211,14 +205,14 @@ bool Person::MergePartialFromCodedStream(
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
             this->name().data(), static_cast<int>(this->name().length()),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "Person.name");
+            "MyMsg.Person.name");
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required int32 age = 2;
+      // optional int32 age = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
@@ -232,16 +226,17 @@ bool Person::MergePartialFromCodedStream(
         break;
       }
 
-      // optional string email = 3;
+      // repeated string email = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_email()));
+                input, this->add_email()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->email().data(), static_cast<int>(this->email().length()),
+            this->email(this->email_size() - 1).data(),
+            static_cast<int>(this->email(this->email_size() - 1).length()),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "Person.email");
+            "MyMsg.Person.email");
         } else {
           goto handle_unusual;
         }
@@ -260,17 +255,17 @@ bool Person::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:Person)
+  // @@protoc_insertion_point(parse_success:MyMsg.Person)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:Person)
+  // @@protoc_insertion_point(parse_failure:MyMsg.Person)
   return false;
 #undef DO_
 }
 
 void Person::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:Person)
+  // @@protoc_insertion_point(serialize_start:MyMsg.Person)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -280,37 +275,37 @@ void Person::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Person.name");
+      "MyMsg.Person.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->name(), output);
   }
 
-  // required int32 age = 2;
-  if (cached_has_bits & 0x00000004u) {
+  // optional int32 age = 2;
+  if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->age(), output);
   }
 
-  // optional string email = 3;
-  if (cached_has_bits & 0x00000002u) {
+  // repeated string email = 3;
+  for (int i = 0, n = this->email_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->email().data(), static_cast<int>(this->email().length()),
+      this->email(i).data(), static_cast<int>(this->email(i).length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Person.email");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->email(), output);
+      "MyMsg.Person.email");
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->email(i), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:Person)
+  // @@protoc_insertion_point(serialize_end:MyMsg.Person)
 }
 
 ::google::protobuf::uint8* Person::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   (void)deterministic; // Unused
-  // @@protoc_insertion_point(serialize_to_array_start:Person)
+  // @@protoc_insertion_point(serialize_to_array_start:MyMsg.Person)
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -320,58 +315,37 @@ void Person::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Person.name");
+      "MyMsg.Person.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->name(), target);
   }
 
-  // required int32 age = 2;
-  if (cached_has_bits & 0x00000004u) {
+  // optional int32 age = 2;
+  if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->age(), target);
   }
 
-  // optional string email = 3;
-  if (cached_has_bits & 0x00000002u) {
+  // repeated string email = 3;
+  for (int i = 0, n = this->email_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->email().data(), static_cast<int>(this->email().length()),
+      this->email(i).data(), static_cast<int>(this->email(i).length()),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "Person.email");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->email(), target);
+      "MyMsg.Person.email");
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteStringToArray(3, this->email(i), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:Person)
+  // @@protoc_insertion_point(serialize_to_array_end:MyMsg.Person)
   return target;
 }
 
-size_t Person::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:Person)
-  size_t total_size = 0;
-
-  if (has_name()) {
-    // required string name = 1;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->name());
-  }
-
-  if (has_age()) {
-    // required int32 age = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->age());
-  }
-
-  return total_size;
-}
 size_t Person::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:Person)
+// @@protoc_insertion_point(message_byte_size_start:MyMsg.Person)
   size_t total_size = 0;
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -379,25 +353,25 @@ size_t Person::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         _internal_metadata_.unknown_fields());
   }
-  if (((_has_bits_[0] & 0x00000005) ^ 0x00000005) == 0) {  // All required fields are present.
-    // required string name = 1;
+  // required string name = 1;
+  if (has_name()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
+  }
+  // repeated string email = 3;
+  total_size += 1 *
+      ::google::protobuf::internal::FromIntSize(this->email_size());
+  for (int i = 0, n = this->email_size(); i < n; i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+      this->email(i));
+  }
 
-    // required int32 age = 2;
+  // optional int32 age = 2;
+  if (has_age()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->age());
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
-  // optional string email = 3;
-  if (has_email()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->email());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -406,38 +380,35 @@ size_t Person::ByteSizeLong() const {
 }
 
 void Person::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:Person)
+// @@protoc_insertion_point(generalized_merge_from_start:MyMsg.Person)
   GOOGLE_DCHECK_NE(&from, this);
   const Person* source =
       ::google::protobuf::internal::DynamicCastToGenerated<const Person>(
           &from);
   if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Person)
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:MyMsg.Person)
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
   } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:Person)
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:MyMsg.Person)
     MergeFrom(*source);
   }
 }
 
 void Person::MergeFrom(const Person& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:Person)
+// @@protoc_insertion_point(class_specific_merge_from_start:MyMsg.Person)
   GOOGLE_DCHECK_NE(&from, this);
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  email_.MergeFrom(from.email_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 7u) {
+  if (cached_has_bits & 3u) {
     if (cached_has_bits & 0x00000001u) {
       set_has_name();
       name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
     }
     if (cached_has_bits & 0x00000002u) {
-      set_has_email();
-      email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
-    }
-    if (cached_has_bits & 0x00000004u) {
       age_ = from.age_;
     }
     _has_bits_[0] |= cached_has_bits;
@@ -445,21 +416,21 @@ void Person::MergeFrom(const Person& from) {
 }
 
 void Person::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:Person)
+// @@protoc_insertion_point(generalized_copy_from_start:MyMsg.Person)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 void Person::CopyFrom(const Person& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:Person)
+// @@protoc_insertion_point(class_specific_copy_from_start:MyMsg.Person)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
 bool Person::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
   return true;
 }
 
@@ -469,9 +440,8 @@ void Person::Swap(Person* other) {
 }
 void Person::InternalSwap(Person* other) {
   using std::swap;
+  email_.InternalSwap(CastToBase(&other->email_));
   name_.Swap(&other->name_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
-  email_.Swap(&other->email_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(age_, other->age_);
   swap(_has_bits_[0], other->_has_bits_[0]);
@@ -485,10 +455,11 @@ void Person::InternalSwap(Person* other) {
 
 
 // @@protoc_insertion_point(namespace_scope)
+}  // namespace MyMsg
 namespace google {
 namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::Person* Arena::CreateMaybeMessage< ::Person >(Arena* arena) {
-  return Arena::CreateInternal< ::Person >(arena);
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::MyMsg::Person* Arena::CreateMaybeMessage< ::MyMsg::Person >(Arena* arena) {
+  return Arena::CreateInternal< ::MyMsg::Person >(arena);
 }
 }  // namespace protobuf
 }  // namespace google

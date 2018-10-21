@@ -45,18 +45,21 @@ struct TableStruct {
 };
 void AddDescriptors();
 }  // namespace protobuf_Person_2eproto
+namespace MyMsg {
 class Person;
 class PersonDefaultTypeInternal;
 extern PersonDefaultTypeInternal _Person_default_instance_;
+}  // namespace MyMsg
 namespace google {
 namespace protobuf {
-template<> ::Person* Arena::CreateMaybeMessage<::Person>(Arena*);
+template<> ::MyMsg::Person* Arena::CreateMaybeMessage<::MyMsg::Person>(Arena*);
 }  // namespace protobuf
 }  // namespace google
+namespace MyMsg {
 
 // ===================================================================
 
-class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Person) */ {
+class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MyMsg.Person) */ {
  public:
   Person();
   virtual ~Person();
@@ -150,6 +153,28 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
   // accessors -------------------------------------------------------
 
+  // repeated string email = 3;
+  int email_size() const;
+  void clear_email();
+  static const int kEmailFieldNumber = 3;
+  const ::std::string& email(int index) const;
+  ::std::string* mutable_email(int index);
+  void set_email(int index, const ::std::string& value);
+  #if LANG_CXX11
+  void set_email(int index, ::std::string&& value);
+  #endif
+  void set_email(int index, const char* value);
+  void set_email(int index, const char* value, size_t size);
+  ::std::string* add_email();
+  void add_email(const ::std::string& value);
+  #if LANG_CXX11
+  void add_email(::std::string&& value);
+  #endif
+  void add_email(const char* value);
+  void add_email(const char* value, size_t size);
+  const ::google::protobuf::RepeatedPtrField< ::std::string>& email() const;
+  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_email();
+
   // required string name = 1;
   bool has_name() const;
   void clear_name();
@@ -165,45 +190,25 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // optional string email = 3;
-  bool has_email() const;
-  void clear_email();
-  static const int kEmailFieldNumber = 3;
-  const ::std::string& email() const;
-  void set_email(const ::std::string& value);
-  #if LANG_CXX11
-  void set_email(::std::string&& value);
-  #endif
-  void set_email(const char* value);
-  void set_email(const char* value, size_t size);
-  ::std::string* mutable_email();
-  ::std::string* release_email();
-  void set_allocated_email(::std::string* email);
-
-  // required int32 age = 2;
+  // optional int32 age = 2;
   bool has_age() const;
   void clear_age();
   static const int kAgeFieldNumber = 2;
   ::google::protobuf::int32 age() const;
   void set_age(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:Person)
+  // @@protoc_insertion_point(class_scope:MyMsg.Person)
  private:
   void set_has_name();
   void clear_has_name();
   void set_has_age();
   void clear_has_age();
-  void set_has_email();
-  void clear_has_email();
-
-  // helper for ByteSizeLong()
-  size_t RequiredFieldsByteSizeFallback() const;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> email_;
   ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::internal::ArenaStringPtr email_;
   ::google::protobuf::int32 age_;
   friend struct ::protobuf_Person_2eproto::TableStruct;
 };
@@ -233,41 +238,41 @@ inline void Person::clear_name() {
   clear_has_name();
 }
 inline const ::std::string& Person::name() const {
-  // @@protoc_insertion_point(field_get:Person.name)
+  // @@protoc_insertion_point(field_get:MyMsg.Person.name)
   return name_.GetNoArena();
 }
 inline void Person::set_name(const ::std::string& value) {
   set_has_name();
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Person.name)
+  // @@protoc_insertion_point(field_set:MyMsg.Person.name)
 }
 #if LANG_CXX11
 inline void Person::set_name(::std::string&& value) {
   set_has_name();
   name_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Person.name)
+  // @@protoc_insertion_point(field_set_rvalue:MyMsg.Person.name)
 }
 #endif
 inline void Person::set_name(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   set_has_name();
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Person.name)
+  // @@protoc_insertion_point(field_set_char:MyMsg.Person.name)
 }
 inline void Person::set_name(const char* value, size_t size) {
   set_has_name();
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Person.name)
+  // @@protoc_insertion_point(field_set_pointer:MyMsg.Person.name)
 }
 inline ::std::string* Person::mutable_name() {
   set_has_name();
-  // @@protoc_insertion_point(field_mutable:Person.name)
+  // @@protoc_insertion_point(field_mutable:MyMsg.Person.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Person::release_name() {
-  // @@protoc_insertion_point(field_release:Person.name)
+  // @@protoc_insertion_point(field_release:MyMsg.Person.name)
   if (!has_name()) {
     return NULL;
   }
@@ -281,97 +286,100 @@ inline void Person::set_allocated_name(::std::string* name) {
     clear_has_name();
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:Person.name)
+  // @@protoc_insertion_point(field_set_allocated:MyMsg.Person.name)
 }
 
-// required int32 age = 2;
+// optional int32 age = 2;
 inline bool Person::has_age() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void Person::set_has_age() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void Person::clear_has_age() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Person::clear_age() {
   age_ = 0;
   clear_has_age();
 }
 inline ::google::protobuf::int32 Person::age() const {
-  // @@protoc_insertion_point(field_get:Person.age)
+  // @@protoc_insertion_point(field_get:MyMsg.Person.age)
   return age_;
 }
 inline void Person::set_age(::google::protobuf::int32 value) {
   set_has_age();
   age_ = value;
-  // @@protoc_insertion_point(field_set:Person.age)
+  // @@protoc_insertion_point(field_set:MyMsg.Person.age)
 }
 
-// optional string email = 3;
-inline bool Person::has_email() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void Person::set_has_email() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void Person::clear_has_email() {
-  _has_bits_[0] &= ~0x00000002u;
+// repeated string email = 3;
+inline int Person::email_size() const {
+  return email_.size();
 }
 inline void Person::clear_email() {
-  email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_email();
+  email_.Clear();
 }
-inline const ::std::string& Person::email() const {
-  // @@protoc_insertion_point(field_get:Person.email)
-  return email_.GetNoArena();
+inline const ::std::string& Person::email(int index) const {
+  // @@protoc_insertion_point(field_get:MyMsg.Person.email)
+  return email_.Get(index);
 }
-inline void Person::set_email(const ::std::string& value) {
-  set_has_email();
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Person.email)
+inline ::std::string* Person::mutable_email(int index) {
+  // @@protoc_insertion_point(field_mutable:MyMsg.Person.email)
+  return email_.Mutable(index);
+}
+inline void Person::set_email(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:MyMsg.Person.email)
+  email_.Mutable(index)->assign(value);
 }
 #if LANG_CXX11
-inline void Person::set_email(::std::string&& value) {
-  set_has_email();
-  email_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:Person.email)
+inline void Person::set_email(int index, ::std::string&& value) {
+  // @@protoc_insertion_point(field_set:MyMsg.Person.email)
+  email_.Mutable(index)->assign(std::move(value));
 }
 #endif
-inline void Person::set_email(const char* value) {
+inline void Person::set_email(int index, const char* value) {
   GOOGLE_DCHECK(value != NULL);
-  set_has_email();
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Person.email)
+  email_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:MyMsg.Person.email)
 }
-inline void Person::set_email(const char* value, size_t size) {
-  set_has_email();
-  email_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Person.email)
+inline void Person::set_email(int index, const char* value, size_t size) {
+  email_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:MyMsg.Person.email)
 }
-inline ::std::string* Person::mutable_email() {
-  set_has_email();
-  // @@protoc_insertion_point(field_mutable:Person.email)
-  return email_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline ::std::string* Person::add_email() {
+  // @@protoc_insertion_point(field_add_mutable:MyMsg.Person.email)
+  return email_.Add();
 }
-inline ::std::string* Person::release_email() {
-  // @@protoc_insertion_point(field_release:Person.email)
-  if (!has_email()) {
-    return NULL;
-  }
-  clear_has_email();
-  return email_.ReleaseNonDefaultNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+inline void Person::add_email(const ::std::string& value) {
+  email_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:MyMsg.Person.email)
 }
-inline void Person::set_allocated_email(::std::string* email) {
-  if (email != NULL) {
-    set_has_email();
-  } else {
-    clear_has_email();
-  }
-  email_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), email);
-  // @@protoc_insertion_point(field_set_allocated:Person.email)
+#if LANG_CXX11
+inline void Person::add_email(::std::string&& value) {
+  email_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:MyMsg.Person.email)
+}
+#endif
+inline void Person::add_email(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  email_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:MyMsg.Person.email)
+}
+inline void Person::add_email(const char* value, size_t size) {
+  email_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:MyMsg.Person.email)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+Person::email() const {
+  // @@protoc_insertion_point(field_list:MyMsg.Person.email)
+  return email_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+Person::mutable_email() {
+  // @@protoc_insertion_point(field_mutable_list:MyMsg.Person.email)
+  return &email_;
 }
 
 #ifdef __GNUC__
@@ -380,6 +388,7 @@ inline void Person::set_allocated_email(::std::string* email) {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace MyMsg
 
 // @@protoc_insertion_point(global_scope)
 
