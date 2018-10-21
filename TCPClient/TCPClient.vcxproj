@@ -22,7 +22,7 @@
     <ProjectGuid>{FDC307C4-03CD-4A20-A425-F90FBF4C8098}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TCPClient</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

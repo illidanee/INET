@@ -22,7 +22,7 @@
     <ProjectGuid>{46EA84DA-932E-49E7-A9BE-688698494F27}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>TCPServer</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

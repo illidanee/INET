@@ -22,7 +22,7 @@
     <ProjectGuid>{2F18503F-3917-4A15-9F85-B483486DC43C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>LibuvFile</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
